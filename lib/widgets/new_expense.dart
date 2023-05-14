@@ -157,11 +157,7 @@ class _NewExpenseState extends State<NewExpense> {
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
-<<<<<<< Updated upstream
-                onPressed: _submitExpenseData,
-=======
                 onPressed: () {},
->>>>>>> Stashed changes
                 child: const Text('Save Expense'),
               )
             ],
