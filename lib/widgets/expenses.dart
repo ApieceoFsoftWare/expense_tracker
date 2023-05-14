@@ -18,31 +18,38 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _registerExpenses = [
     Expense(
-      title: 'Flutter Course',
+      title: 'Örnek',
       date: DateTime.now(),
       amount: 19.99,
-      category: Category.food,
-    ),
-    Expense(
-      title: 'Cinema',
-      date: DateTime.now(),
-      amount: 15.69,
-      category: Category.leisure,
+      category: Category.diger,
     ),
   ];
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
-      builder: (context) => const NewExpense(),
+      builder: (context) => NewExpense(onAddExpense: _addExpense),
     );
+  }
+
+  _addExpense(Expense expense) {
+    setState(() {
+      _registerExpenses.add(expense);
+    });
+  }
+
+  void _removeExpense(Expense expense) {
+    setState(() {
+      _registerExpenses.remove(expense);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Expense Tracker'),
+        title: const Text('Gider Takip Programı'),
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
@@ -52,10 +59,11 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          const Text('The Chart'),
+          const Text('Gider Tablosu'),
           Expanded(
             child: ExpensesList(
               expenses: _registerExpenses,
+              onRemoveExpense: _removeExpense,
             ),
           ),
         ],
