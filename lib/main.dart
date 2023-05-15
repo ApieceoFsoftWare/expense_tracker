@@ -11,6 +11,12 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 );
 
 void main(List<String> args) {
+  /** 
+     * WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]).then((fn) { 
+  */
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -56,4 +62,5 @@ void main(List<String> args) {
       home: const Expenses(),
     ),
   );
+//  });
 }
